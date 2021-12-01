@@ -2,7 +2,6 @@
 #define _CRT_SECURE_NO_WARNINGS
 #include <stdio.h>
 #include <stdlib.h>
-#include "README.c"
 #define INFN "input.txt"
 #define OUTFN "output.txt"
 #define N 20
@@ -15,7 +14,7 @@ struct Employee
 	char last_name[S];
 	char gender[S];
 	char id[S];
-	int age[S];
+	int age;
 	char phone_number[S];
 	int password;
 	char Email[25];
@@ -32,7 +31,7 @@ struct Employer
 	char last_name[S];
 	char gender[S];
 	char id[S];
-	int age[S];
+	int age;
 	char phone_number[S];
 	int password;
 	char Email[25];
@@ -40,10 +39,38 @@ struct Employer
 	char company_name[N];
 
 };
+void printf_employee_details(struct Employee w)// פרטי עובד
+{
+	printf("first name: ");
+	puts(w.first_name);
+	printf("last name: ");
+	puts(w.last_name);
+	printf("gender: ");
+	puts(w.gender);
+	printf("id: ");
+	printf("%s", w.id);
+	printf("\nage: ");
+	printf("%d", w.age);
+	printf("phone number: ");
+	puts(w.phone_number);
+	printf("password: ");
+	printf("%d", w.password);
+	printf("emmail: ");
+	puts(w.Email);
+	printf("living area: ");
+	puts(w.living_area);
+	printf("Driving_License: ");
+	puts(w.Driving_License);
+	printf("Education_level: ");
+	puts(w.Education_level);
+	printf("Employment_Catagory: ");
+	puts(w.Employment_Catagory);
+}
+
 void read_Employee_Data_File(struct Employee* employee[100])
 {
 	int i = 0;
-	FILE* fp = fopen("https:\\github.com\\dreizfi\\good-job-project.git\\Employee.txt", "a");
+	FILE* fp = fopen("C:\\Users\\Administrator\\source\\repos\\good job\\Employee.txt", "r");
 	if (!fp)
 	{
 		printf("Couldn't Open File!\n");
@@ -71,26 +98,52 @@ void read_Employee_Data_File(struct Employee* employee[100])
 void print_data_file_employer(struct Employer emp)
 {
 
-	FILE* fp = fopen("C:https:\\github.com\\dreizfi\\good-job-project.git\\Employer.txt", "a");
+	FILE* fp = fopen("C:\\Users\\Administrator\\source\\repos\\good job\\Employer.txt", "w");
 	if (!fp)
 		exit(-1);
-	fprintf(fp, "%s %s %s %s %d %s %d %s %d\n", emp.first_name, emp.last_name, emp.gender, emp.id, &emp.age, emp.phone_number, emp.password, emp.Email, emp.policies);
+	fprintf(fp, "%s", emp.first_name);
+	fprintf(fp, "%s", emp.last_name);
+	fprintf(fp, "%s", emp.gender);
+	fprintf(fp, "%s", emp.id);
+	fprintf(fp, "%d", emp.age);
+	fprintf(fp, "%s", emp.phone_number);
+	fprintf(fp, "%d", emp.password);
+	fprintf(fp, "%s", emp.Email);
+	fprintf(fp, "%d", emp.policies);
+	//fprintf(fp, "%s %s %s %s %d %s %d %s %d\n", emp.first_name, emp.last_name, emp.gender, emp.id, &emp.age, emp.phone_number, emp.password, emp.Email, emp.policies);
 }
 void print_data_file_employee(struct Employee worker)
 {
 	FILE* fp = fopen("C:\\Users\\Administrator\\source\\repos\\good job\\Employer.txt", "w");
-	fprintf(fp, "%s %s %s %s %d %s %d %s %s %s %s %s %d\n", worker.first_name, worker.last_name, worker.gender, worker.id, worker.age, worker.phone_number, worker.password, worker.Email, worker.living_area, worker.Driving_License, worker.Education_level, worker.Employment_Catagory, worker.policies);
+	fprintf(fp, "%s ", worker.first_name);
+	fprintf(fp, "%s ", worker.last_name);
+	fprintf(fp, "%s ", worker.gender);
+	fprintf(fp, "%s ", worker.id);
+	fprintf(fp, "%d ", worker.age);
+	fprintf(fp, "%s ", worker.phone_number);
+	fprintf(fp, "%d ", worker.password);
+	fprintf(fp, "%s ", worker.Email);
+	fprintf(fp, "%s ", worker.living_area);
+	fprintf(fp, "%s ", worker.Driving_License);
+	fprintf(fp, "%s ", worker.Education_level);
+	fprintf(fp, "%s ", worker.Employment_Catagory);
+	for(int j=0;j<10;++j)
+		fprintf(fp, "%d ",1);
+	fprintf(fp, "%d ", worker.policies);
+
+
+	//fprintf(fp, "%s %s %s %s %d %s %d %s %s %s %s %s %d\n", worker.first_name, worker.last_name, worker.gender, worker.id, worker.age, worker.phone_number, worker.password, worker.Email, worker.living_area, worker.Driving_License, worker.Education_level, worker.Employment_Catagory, worker.policies);
 	fclose(fp);
 }
 
-//void init_file_employee(struct Employee arr[])
-//{
-//	int i;
-//	FILE* fp = fopen("https:\\github.com\\dreizfi\\good-job-project.git\\Employer.txt", "w");
-//	for (i = 0; i < 3; i++)
-//		fprintf(fp, "%s  %s  %s  %s  %d  %s  %d  %s  %s  %s  %s  %s  %d\n", arr[i].first_name, arr[i].last_name, arr[i].gender, arr[i].id, arr[i].age, arr[i].phone_number, arr[i].password, arr[i].Email, arr[i].living_area, arr[i].Driving_License, arr[i].Education_level, arr[i].Employment_Catagory, arr[i].policies);
-//	fclose(fp);
-//}
+void init_file_employee(struct Employee arr[])
+{
+	int i;
+	FILE* fp = fopen("C:\\Users\\Administrator\\source\\repos\\good job\\Employer.txt", "w");
+	for (i = 0; i < 3; i++)
+		fprintf(fp, "%s  %s  %s  %s  %d  %s  %d  %s  %s  %s  %s  %s  %d\n", arr[i].first_name, arr[i].last_name, arr[i].gender, arr[i].id, arr[i].age, arr[i].phone_number, arr[i].password, arr[i].Email, arr[i].living_area, arr[i].Driving_License, arr[i].Education_level, arr[i].Employment_Catagory, arr[i].policies);
+	fclose(fp);
+}
 
 void logIn(struct Employee workers[3], struct Employer bosses[3])//המשתמש נכנס למערכת
 {
@@ -144,26 +197,26 @@ void logIn(struct Employee workers[3], struct Employer bosses[3])//המשתמש 
 	printf("have a nice day");
 }
 
-void read_Employer_Data_File(struct Employer* employer[100])
+void read_Employer_Data_File(struct Employer* employer)
 {
 	int i = 0;
-	FILE* fp = fopen("https:\\github.com\\dreizfi\\good-job-project.git\\Employer.txt", "r");
+	FILE* fp = fopen("C:\\Users\\Administrator\\source\\repos\\good job\\Employer.txt", "r");
 	if (!fp)
 	{
 		printf("Couldn't Open File!\n");
 		exit(-1);
 	}
-	for (i = 0; i < 2; ++i)
+	for (i = 0; i < 100; ++i)
 	{
-		fscanf(fp, "%S ,", employer[i]->first_name);
-		fscanf(fp, "%S ,", employer[i]->last_name);
-		fscanf(fp, "%S ,", employer[i]->gender);
-		fscanf(fp, "%d ,", &(employer[i]->id));
-		fscanf(fp, "%d ,", &(employer[i]->age));
-		fscanf(fp, "%S ,", employer[i]->phone_number);
-		fscanf(fp, "%d ,", &(employer[i]->password));
-		fscanf(fp, "%s ,", (employer[i]->Email));
-		fscanf(fp, "%s ,", (employer[i]->company_name));
+		fscanf(fp, "%s", employer->first_name);
+		fscanf(fp, "%s", employer->last_name);
+		fscanf(fp, "%s", employer->gender);
+		fscanf(fp, "%s", (employer->id));
+		fscanf(fp, "%d", &(employer->age));
+		fscanf(fp, "%s", employer->phone_number);
+		fscanf(fp, "%d", &(employer->password));
+		fscanf(fp, "%s", (employer->Email));
+		fscanf(fp, "%s", (employer->company_name));
 
 	}
 	fclose(fp);
@@ -177,18 +230,19 @@ void init_employee()
 	char employment_catagory[20][20] = { "education","engineering","medicene","office" };
 	char educ_level[4][30] = { "SchoolYears" ,"Student" ,"BA" , "MA" };
 	int choose, choose_educ;
-	FILE* fp = fopen("data_worker.txt", "w");
+	/*FILE* fp = fopen("data_worker.txt", "w");
 	if (!fp)
 	{
 		printf("Can't Open File.\n");
 		exit(1);
-	}
+	}*/
+	strcpy(worker.Driving_License, "no");
 	printf("Please Enter First Name:\n");
-	scanf("%s", &(worker.first_name));
+	scanf("%s", (worker.first_name));
 	printf("Please Enter Last Name:\n ");
-	scanf("%s", &(worker.last_name));
+	scanf("%s", (worker.last_name));
 	printf("Please Enter ID Number (9 digits):");
-	scanf("%d", &(worker.id));
+	scanf("%s", (worker.id));
 	if (strlen(worker.id) != 9)
 	{
 		printf("Invaild ID Number!\n");
@@ -200,7 +254,7 @@ void init_employee()
 		printf("Illegal age to look for a job.\n");
 	}
 	printf("Enter Your Phone Number (10 digits):\n");
-	scanf("%d", &(worker.phone_number));
+	scanf("%s", (worker.phone_number));
 	if (strlen(worker.phone_number) != 10)
 	{
 		printf("Phone Number Must Contain 10 Digits.\n");
@@ -225,7 +279,7 @@ void init_employee()
 	scanf("%d", &licence);
 	if (licence == 1)
 		strcpy(worker.Driving_License, "yes");
-	fprintf(fp, "%s", (worker.Driving_License));
+	//fprintf(fp, "%s", (worker.Driving_License));
 	if (licence == 2)
 		strcpy(worker.Driving_License, "No");
 	printf("Please Enter Employment Catagory:\n1.Education\n2.Engineering\n3.Medicne\n4.Office\n");
@@ -237,6 +291,8 @@ void init_employee()
 	strcpy(worker.Education_level, educ_level[level_educ - 1]);
 	printf(worker.Education_level);//check=good
 	printf("Final Step: In Order To Complete The Registration Process Please Enter 1 To Approve Our Webstite's Policies:\n");
+	for (int j = 0; j < 10; ++j)
+		worker.apply_jobs[j] = 0;
 	scanf("%d", &(worker.policies));
 	if ((worker.policies) != 1)
 	{
@@ -253,6 +309,7 @@ void init_employee()
 
 	else
 	{
+		printf_employee_details(worker);// פרטי עובד
 		printf("%s , Welcome To Our Website! You Have Succesfuly Signed-up.\n", worker.first_name);
 		print_data_file_employee(worker);
 		read_Employee_Data_File(&worker);
@@ -333,7 +390,6 @@ int main()
 	{
 	case 1:
 		Registration_Process(&employer, size, &workers);
-		break;
 	case 2:
 		for (int i = 0; i < 100; ++i)
 		{
@@ -342,4 +398,5 @@ int main()
 		}
 		logIn(workers, employer);
 	}
+	return 0;
 }
