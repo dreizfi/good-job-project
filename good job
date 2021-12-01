@@ -42,7 +42,7 @@ struct Employer
 void read_Employee_Data_File(struct Employee* employee[100])
 {
 	int i = 0;
-	FILE* fp = fopen("C:\\Users\\Administrator\\source\\repos\\good job\\Employee.txt", "w");
+	FILE* fp = fopen("https:\\github.com\\dreizfi\\good-job-project.git\\Employee.txt", "a");
 	if (!fp)
 	{
 		printf("Couldn't Open File!\n");
@@ -70,7 +70,7 @@ void read_Employee_Data_File(struct Employee* employee[100])
 void print_data_file_employer(struct Employer emp)
 {
 
-	FILE* fp = fopen("C:\\Users\\Administrator\\source\\repos\\good job\\Employer.txt", "w");
+	FILE* fp = fopen("C:https:\\github.com\\dreizfi\\good-job-project.git\\Employer.txt", "a");
 	if (!fp)
 		exit(-1);
 	fprintf(fp, "%s %s %s %s %d %s %d %s %d\n", emp.first_name, emp.last_name, emp.gender, emp.id, &emp.age, emp.phone_number, emp.password, emp.Email, emp.policies);
@@ -82,14 +82,14 @@ void print_data_file_employee(struct Employee worker)
 	fclose(fp);
 }
 
-void init_file_employee(struct Employee arr[])
-{
-	int i;
-	FILE* fp = fopen("C:\\Users\\Administrator\\source\\repos\\good job\\Employer.txt", "w");
-	for (i = 0; i < 3; i++)
-		fprintf(fp, "%s  %s  %s  %s  %d  %s  %d  %s  %s  %s  %s  %s  %d\n", arr[i].first_name, arr[i].last_name, arr[i].gender, arr[i].id, arr[i].age, arr[i].phone_number, arr[i].password, arr[i].Email, arr[i].living_area, arr[i].Driving_License, arr[i].Education_level, arr[i].Employment_Catagory, arr[i].policies);
-	fclose(fp);
-}
+//void init_file_employee(struct Employee arr[])
+//{
+//	int i;
+//	FILE* fp = fopen("https:\\github.com\\dreizfi\\good-job-project.git\\Employer.txt", "w");
+//	for (i = 0; i < 3; i++)
+//		fprintf(fp, "%s  %s  %s  %s  %d  %s  %d  %s  %s  %s  %s  %s  %d\n", arr[i].first_name, arr[i].last_name, arr[i].gender, arr[i].id, arr[i].age, arr[i].phone_number, arr[i].password, arr[i].Email, arr[i].living_area, arr[i].Driving_License, arr[i].Education_level, arr[i].Employment_Catagory, arr[i].policies);
+//	fclose(fp);
+//}
 
 void logIn(struct Employee workers[3], struct Employer bosses[3])//המשתמש נכנס למערכת
 {
@@ -146,7 +146,7 @@ void logIn(struct Employee workers[3], struct Employer bosses[3])//המשתמש 
 void read_Employer_Data_File(struct Employer* employer[100])
 {
 	int i = 0;
-	FILE* fp = fopen("C:\\Users\\Administrator\\source\\repos\\good job\\Employer.txt", "r");
+	FILE* fp = fopen("https:\\github.com\\dreizfi\\good-job-project.git\\Employer.txt", "r");
 	if (!fp)
 	{
 		printf("Couldn't Open File!\n");
